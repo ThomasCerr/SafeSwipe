@@ -87,7 +87,7 @@ async def analyze(request: Request,
     bio_lower = (bio or '').lower()
     c_hits = [c for c in cliches if c in bio_lower]
     if c_hits:
-        signals.append(f'Bio contains common clichés: {', '.join(c_hits[:4])}')
+        signals.append(f"Bio contains common clichés: {', '.join(c_hits[:4])}")
 
     heuristic_risk = 0
     if any('near-duplicates' in s.lower() for s in signals): heuristic_risk += 15
