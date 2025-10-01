@@ -4,6 +4,4 @@ jinja2
 python-multipart
 pillow
 imagehash
-transformers>=4.41.0
-torch>=2.2.0
-timm
+requests
