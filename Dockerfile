@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY requirements.txt ./
 
-# Correct backslashes with NO trailing spaces after "\"
+# Install only minimal system deps for Pillow & imagehash
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential git libgl1 libglib2.0-0 && \
+    libgl1 libglib2.0-0 && \
     pip install --no-cache-dir -r requirements.txt && \
-    apt-get purge -y build-essential && rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 COPY . .
 
