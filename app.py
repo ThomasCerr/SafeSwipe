@@ -30,6 +30,9 @@ def hf_classify(img: Image.Image):
         resp = requests.post(HF_API_URL, headers=HEADERS, data=buf.getvalue(), timeout=30)
         resp.raise_for_status()
         data = resp.json()
+
+        print("HF raw response:", data)
+
         best = 0.0
         if isinstance(data, list):
             for r in data:
@@ -39,6 +42,7 @@ def hf_classify(img: Image.Image):
                     best = max(best, score)
         return best
     except Exception as e:
+        print("HF error:", e)
         return None
 
 
