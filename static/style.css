@@ -1,0 +1,33 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#222;background:#fff}
+a{text-decoration:none;color:inherit}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:#fff;position:sticky;top:0;z-index:50;border-bottom:1px solid #eee}
+.brand{font-weight:800;color:#222}
+.hero.gradient{background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;padding:64px 20px}
+.split{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;align-items:center;max-width:1100px;margin:0 auto}
+.split.reverse{direction:rtl}.split.reverse>*{direction:ltr}
+.col.img{position:relative}
+.col.img img{width:100%;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.stamp{position:absolute;bottom:16px;left:16px;background:rgba(255,0,0,.85);color:#fff;padding:8px 12px;border-radius:8px;font-weight:900;letter-spacing:.5px}
+.col.text h1{font-size:44px;margin:0 0 12px}
+.col.text .sub{opacity:.95;margin:0 0 16px}
+.primary{display:inline-block;background:#2575fc;color:#fff;padding:12px 18px;border-radius:10px;font-weight:800}
+.primary.large{padding:14px 22px}
+.section{padding:60px 20px}
+.section.alt{background:#f8fafe}
+.bullets{list-style:none;padding:0;line-height:1.9}
+.review{background:#fff;border:1px solid #eee;border-radius:12px;padding:14px 16px;margin:10px 0;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.footer{text-align:center;padding:22px;background:#fafafa;color:#777}
+.tool-wrap{max-width:900px;margin:20px auto;padding:0 16px}
+.card{background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.08);padding:16px}
+.upload form{display:flex;flex-direction:column;gap:10px}
+.upload input,.upload textarea{padding:10px;border:1px solid #ccc;border-radius:10px}
+.fineprint{font-size:12px;color:#777}
+.model{font-size:12px;color:#666}
+.warn{color:#d00}
+.how{margin-bottom:16px}
+.legend{margin-top:10px}
+.result-wrap{display:flex;justify-content:center;padding:40px 16px}
+.result{max-width:680px;width:100%}
+.verdict{display:inline-block;margin:10px 0 16px;padding:10px 14px;border-radius:999px;background:#eef3ff;color:#1b3fae;font-weight:900}
+.scan-again{display:inline-block;margin-top:14px}
