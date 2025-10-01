@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeSwipe — Safer Swiping, Smarter Dating</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">SafeSwipe</div>
+    <nav class="links">
+      <a href="#mission">Mission</a>
+      <a href="#why">Why Use</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </header>
+
+  <section class="hero gradient">
+    <div class="hero-copy">
+      <h1>Safer Swiping, Smarter Dating</h1>
+      <p class="sub">Upload screenshots of dating profiles and instantly check if they’re real or AI-made.</p>
+      <form action="/analyze" method="post" enctype="multipart/form-data" class="card upload">
+        <input type="file" name="files" multiple accept="image/*" required>
+        <textarea name="bio" rows="3" placeholder="Paste bio text (optional)"></textarea>
+        <button type="submit" class="primary">Check Profile Now</button>
+        <div class="fineprint">Private & secure — no uploads stored.</div>
+      </form>
+    </div>
+  </section>
+
+  <section id="mission" class="section light">
+    <h2>Our Mission</h2>
+    <p>SafeSwipe exists to keep online dating safe. With AI fakes and scams rising, our tool gives you quick peace of mind before you waste time — or worse, risk meeting someone who isn’t real.</p>
+  </section>
+
+  <section id="why" class="section dark">
+    <h2>Why Use SafeSwipe?</h2>
+    <div class="grid">
+      <div class="card bright"><h3>Fast</h3><p>Instant results on profiles before you swipe right.</p></div>
+      <div class="card bright"><h3>Accurate</h3><p>AI-powered detection tuned for dating screenshots.</p></div>
+      <div class="card bright"><h3>Private</h3><p>No data stored. Ever.</p></div>
+    </div>
+  </section>
+
+  <section id="reviews" class="section light">
+    <h2>User Stories</h2>
+    <div class="reviews">
+      <div class="review">“I avoided a scam date thanks to SafeSwipe.” – Clarissa</div>
+      <div class="review">“Saved me from wasting weeks chatting with a bot.” – Matt</div>
+      <div class="review">“Finally, peace of mind while swiping.” – Emily</div>
+    </div>
+  </section>
+
+  <section id="how" class="section dark">
+    <h2>How It Works</h2>
+    <div class="grid">
+      <div class="card bright"><h3>1. Upload</h3><p>Add profile screenshots & optional bio.</p></div>
+      <div class="card bright"><h3>2. Scan</h3><p>Our AI checks for fake images, duplicates, and clichés.</p></div>
+      <div class="card bright"><h3>3. Result</h3><p>Clear verdict: Not Likely Fake, Likely Fake, or Very Likely Fake.</p></div>
+    </div>
+  </section>
+
+  <section class="cta gradient">
+    <h2>Join thousands staying safe every day</h2>
+    <a href="/" class="primary large">Try SafeSwipe Free</a>
+  </section>
+
+  <footer class="footer">
+    <div>© SafeSwipe</div>
+  </footer>
+</body>
+</html>
