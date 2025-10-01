@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeSwipe — Profile Checker</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">SafeSwipe</div>
+    <nav class="links">
+      <a href="/">Home</a>
+    </nav>
+  </header>
+
+  <main class="tool-wrap">
+    <section class="how">
+      <h1>How It Works</h1>
+      <ol>
+        <li>Upload 1–5 screenshots from the profile.</li>
+        <li>We analyze the images with an AI detector and simple consistency checks.</li>
+        <li>We show one of three results below.</li>
+      </ol>
+      <div class="legend">
+        <div><span class="tag green"></span> <strong>Not Made with AI</strong> — looks like a normal camera photo with no AI indicators.</div>
+        <div><span class="tag amber"></span> <strong>Potentially Made with AI</strong> — some signals (artifacts, inconsistent details, duplicate photos) suggest risk.</div>
+        <div><span class="tag red"></span> <strong>Definitely Made with AI</strong> — high model confidence that the images were generated.</div>
+      </div>
+    </section>
+
+    <section class="card upload">
+      <form action="/analyze" method="post" enctype="multipart/form-data">
+        <label>Upload up to 5 screenshots</label>
+        <input type="file" name="files" multiple accept="image/*" required>
+        <label>Optional: paste the bio text</label>
+        <textarea name="bio" rows="3" placeholder="Paste bio text (optional)"></textarea>
+        <button type="submit" class="primary">Run Scan</button>
+        <div class="fineprint">Private & secure — we don’t store uploads.</div>
+        <div class="model">Detector: {{ model_id }} {% if model_error %}<span class="warn">(fallback active: {{ model_error }})</span>{% endif %}</div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© SafeSwipe</div>
+  </footer>
+</body>
+</html>
