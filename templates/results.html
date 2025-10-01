@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SwipeSafe — Result</title>
+  <link rel="stylesheet" href="/static/style.css">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-25VB4TSR7Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-25VB4TSR7Z');
+  </script>
+
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><a href="/">SwipeSafe</a></div>
+    <nav class="links"><a href="/tool">Tool</a></nav>
+  </header>
+
+  <main class="result-wrap fade-in">
+    <div class="card result">
+      <h2>Result</h2>
+      <div class="verdict">{{ verdict }}</div>
+      <h3>Signals</h3>
+      <ul class="signals">
+        {% for s in signals %}<li>{{ s }}</li>{% else %}<li>No suspicious signals found.</li>{% endfor %}
+      </ul>
+      <a class="primary scan-again" href="/tool">Scan Another Profile</a>
+      <div class="model">Detector: umm-maybe/ai-art-detector — {% if detector_ready %}ready{% else %}<span class="warn">AI detection disabled — set HF_TOKEN in Render</span>{% endif %}</div>
+    </div>
+  </main>
+
+  <footer class="footer"><div>© SwipeSafe</div></footer>
+</body>
+</html>
