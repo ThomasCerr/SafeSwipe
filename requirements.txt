@@ -1,9 +1,0 @@
-fastapi
-uvicorn[standard]
-jinja2
-python-multipart
-pillow
-imagehash
-requests
-opencv-python-headless
-numpy
