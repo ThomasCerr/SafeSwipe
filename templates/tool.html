@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SwipeSafe — Profile Checker</title>
+  <link rel="stylesheet" href="/static/style.css">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-25VB4TSR7Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-25VB4TSR7Z');
+  </script>
+
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><a href="/">SwipeSafe</a></div>
+    <nav class="links"><a href="/">Home</a></nav>
+  </header>
+
+  <main class="tool-wrap">
+    <section class="how fade-in">
+      <h1>How It Works</h1>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div><b>Upload</b><p>Drop or choose up to 5 screenshots.</p></div></div>
+        <div class="step"><div class="num">2</div><div><b>Scan</b><p>We run AI detection plus duplicate & bio checks.</p></div></div>
+        <div class="step"><div class="num">3</div><div><b>Result</b><p>Not Made with AI, Potentially, or Definitely Made with AI.</p></div></div>
+      </div>
+    </section>
+
+    <section class="card upload fade-in">
+      <form action="/analyze" method="post" enctype="multipart/form-data" id="uploadForm">
+        <label class="dropzone">Drop up to 5 screenshots here or click to upload
+          <input type="file" id="fileInput" name="files" multiple accept="image/*" hidden required>
+        </label>
+        <div id="preview"></div>
+
+        <div class="optional">
+          <label>Optional: paste the bio text</label>
+          <textarea name="bio" rows="3" placeholder="Paste bio text (optional)"></textarea>
+        </div>
+
+        <button type="submit" class="primary">Run Scan</button>
+        <div class="fineprint">Private & secure — we don’t store uploads.</div>
+        <div class="model">Detector: {{ model_id }} — {% if detector_ready %}<span class="ok">Live</span>{% else %}<span class="warn">Detection disabled — set HF_TOKEN</span>{% endif %}</div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© SwipeSafe</div>
+  </footer>
+
+  <script>
+    // GA event when a scan is submitted
+    const form = document.getElementById("uploadForm");
+    form.addEventListener("submit", function() {
+      if (window.gtag) gtag('event', 'scan_submitted', { 'event_category': 'engagement', 'event_label': 'scan' });
+    });
+
+    const dropzone = document.querySelector('.dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('hover'); });
+    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('hover'));
+    dropzone.addEventListener('drop', e => {
+      e.preventDefault();
+      fileInput.files = e.dataTransfer.files;
+      showPreview();
+    });
+
+    fileInput.addEventListener('change', showPreview);
+
+    function showPreview() {
+      preview.innerHTML = '';
+      [...fileInput.files].slice(0,5).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.classList.add('thumb');
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  </script>
+</body>
+</html>
